@@ -1,142 +1,54 @@
-﻿namespace ClassWork
+﻿using System.Numerics;
+using ClassWork.CW;
+using static ClassWork.CW.cw3;
+using static ClassWork.CW.player;
+
+namespace ClassWork
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            #region Array/String
-            //Console.WriteLine("Hello, World!");
-            //int[] ints = { 1, 2, 3, 4, 5 };
-            //ints = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            #region CW3
+            //CW.cw3.vector3 vecc = new(1,1,1);
+            //cw3.vector3 vec = new(1, 2, 3);
+            //cw3.vector3 vec2 = new(1, 2, 3);
+            //Console.WriteLine(vector3.Equals(vec, vec2));
+            //Console.WriteLine(vec.GetType());
+            //Console.WriteLine(vec.ToString());
+            //Console.WriteLine(vec.y);
+            //vec.y = 3;
+            //Console.WriteLine(vec.y);
+            //player player = new();
+            //player.print();
+            //player.MaxHealth = 1000;
+            //Console.WriteLine(player.MaxHealth);
+            //Console.WriteLine();
 
-            //short[,] shotrs = { { 1, 2, }, { 1, 2 }, { 1, 2 }, { 1, 2 } };
+            //int val = 0;
+            //cw3.init(out val);
+            //Console.WriteLine(val);
 
-            //Console.WriteLine(shotrs.GetLength(0));
-            //Console.WriteLine(shotrs.GetLength(1));
-            //int[] ints2 = new int[15];
-            //ints.CopyTo(ints2, 0);
-            //for(int i = 0; i < ints2.Length; i++)
-            //{
-            //    Console.Write(ints2[i]);
-            //    Console.Write(' ');
-            //}
-            //Console.Write('\n');
-            //Console.WriteLine(ints2.GetUpperBound(0));
-            //int[] ints3 = ints.Clone() as int[];
-            //Console.WriteLine(Array.BinarySearch(ints, 3));
+            //cw3.addten(ref val);
+            //Console.WriteLine(val);
 
-            //string interPolatedString = $"This is interpolated string. Ints[1] value {ints[0]}";
-            //Console.WriteLine(interPolatedString);
+            //Console.WriteLine();
+            //cw3.printnums(3, 1, 2, 3, 4, 1, 32);
 
-            //StringBuilder strB = new StringBuilder();
-            //strB.Append(149141424);
-            //strB.Append(true);
-            //strB.Append(true);
-            //strB.Append(true);
-            //strB.Append(true);
-            //Console.WriteLine(strB.ToString());
-
-            //Console.WriteLine(args[0]);
+            //Console.WriteLine();
+            //cw3.OptinParams(3, 10);
+            //Console.WriteLine(cw3.Dob(10, 20));
+            //Console.WriteLine(cw3.isFibonachi(144));
             #endregion
-
-            //Console.WriteLine(Enum.Parse(typeof(PlayerStatus), "Online"));
-
-            //1
-            int[] arr = new int[] { 2, 3, 5, 9, 11, 2, 11, 20 };
-            int par = 0, nepar = 0, uniq = 0, count = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] % 2 == 0)
-                {
-                    par++;
-                }
-                else
-                {
-                    nepar++;
-                }
-                for (int j = 0; j < arr.Length; j++)
-                {
-                    if (arr[j] == arr[i])
-                    {
-                        count++;
-                    }
-                }
-                if (count == 1)
-                {
-                    uniq++;
-                }
-                count = 0;
-            }
-            Console.WriteLine($"Even nums: {par}");
-            Console.WriteLine($"Odd nums: {nepar}");
-            Console.WriteLine($"Unique nums: {uniq}");
-
-            //2
-            int num = 5;
-            int res = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] < num)
-                {
-                    res++;
-                }
-            }
-            Console.WriteLine($"Res nums: {res}");
-
-
+            #region CW4
+            CW.Point p1 = new(1, 2);
+            CW.Point p2 = new(6, 4);
+            CW.Point p3 = p1 + p2;
+            Console.WriteLine(p3[0] + " ; " + p3[1]);
+            p3[0] = 0;
+            p3[1] = 0;
+            Console.WriteLine(p3[0] + " ; " + p3[1]);
+            #endregion
         }
-
-        void ShowInfo(int[] arr)
-        {
-            int par = 0, nepar = 0, uniq = 0, count = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] % 2 == 0)
-                {
-                    par++;
-                }
-                else
-                {
-                    nepar++;
-                }
-                for (int j = 0; j < arr.Length; j++)
-                {
-                    if (arr[j] == arr[i])
-                    {
-                        count++;
-                    }
-                }
-                if (count == 1)
-                {
-                    uniq++;
-                    count = 0;
-                }
-            }
-            Console.WriteLine($"Even nums: {par}");
-            Console.WriteLine($"Odd nums: {nepar}");
-            Console.WriteLine($"Unique nums: {uniq}");
-
-
-        }
-
-        void LessThan(int[] arr, int num)
-        {
-            int res = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] < num)
-                {
-                    res++;
-                }
-            }
-            Console.WriteLine($"Res nums: {res}");
-        }
-
-
-        enum PlayerStatus
-        {
-            Online, Offline, NoInfo
-        }
-
     }
 }
