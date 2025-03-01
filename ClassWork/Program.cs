@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using ClassWork.CW;
 using static ClassWork.CW.cw3;
+using static ClassWork.CW.cw5;
 using static ClassWork.CW.player;
 
 namespace ClassWork
@@ -41,13 +42,17 @@ namespace ClassWork
             //Console.WriteLine(cw3.isFibonachi(144));
             #endregion
             #region CW4
-            CW.Point p1 = new(1, 2);
-            CW.Point p2 = new(6, 4);
-            CW.Point p3 = p1 + p2;
-            Console.WriteLine(p3[0] + " ; " + p3[1]);
-            p3[0] = 0;
-            p3[1] = 0;
-            Console.WriteLine(p3[0] + " ; " + p3[1]);
+            //CW.Point p1 = new(1, 2);
+            //CW.Point p2 = new(6, 4);
+            //CW.Point p3 = p1 + p2;
+            //Console.WriteLine(p3[0] + " ; " + p3[1]);
+            //p3[0] = 0;
+            //p3[1] = 0;
+            //Console.WriteLine(p3[0] + " ; " + p3[1]);
+            #endregion
+            #region CW5
+            cw5 cw = new cw5();
+            cw.print();
             #endregion
         }
     }
