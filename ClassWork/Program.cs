@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using ClassWork.CW;
+using ClassWork.CW.cw6;
 using static ClassWork.CW.cw3;
 using static ClassWork.CW.cw5;
 using static ClassWork.CW.player;
@@ -51,8 +52,28 @@ namespace ClassWork
             //Console.WriteLine(p3[0] + " ; " + p3[1]);
             #endregion
             #region CW5
-            cw5 cw = new cw5();
-            cw.print();
+            //cw5 cw = new cw5();
+            //cw.print();
+            #endregion
+            #region CW6
+            //CW6.main();
+            //Practice.t1();
+            //Practice.t2();
+            try
+            {
+                CW.cw6.CreditCard card = new CW.cw6.CreditCard("313231111", "Matvey Tkachuk", "r221");
+                card.print();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Invalid card number");
+                Console.WriteLine(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("ctor ArgumentException exception");
+                Console.WriteLine(ex.Message);
+            }
             #endregion
         }
     }
