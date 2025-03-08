@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using ClassWork.CW;
 using ClassWork.CW.cw6;
+using ClassWork.CW.cw7;
 using static ClassWork.CW.cw3;
 using static ClassWork.CW.cw5;
 using static ClassWork.CW.player;
@@ -59,21 +60,49 @@ namespace ClassWork
             //CW6.main();
             //Practice.t1();
             //Practice.t2();
-            try
-            {
-                CW.cw6.CreditCard card = new CW.cw6.CreditCard("313231111", "Matvey Tkachuk", "r221");
-                card.print();
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Invalid card number");
-                Console.WriteLine(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine("ctor ArgumentException exception");
-                Console.WriteLine(ex.Message);
-            }
+            //try
+            //{
+            //    CW.cw6.CreditCard card = new CW.cw6.CreditCard("313231111", "Matvey Tkachuk", "r221");
+            //    card.print();
+            //}
+            //catch (FormatException ex)
+            //{
+            //    Console.WriteLine("Invalid card number");
+            //    Console.WriteLine(ex.Message);
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine("ctor ArgumentException exception");
+            //    Console.WriteLine(ex.Message);
+            //}
+            #endregion
+            #region CW7
+            //CW.cw7.IMovement move = new CW.cw7.Auto();
+            //move.Move();
+            //move.Stop();
+            //Library library = new Library();
+            //foreach (Book book in library)
+            //{
+            //    Console.WriteLine(book);
+            //}
+            //Console.WriteLine("Sorting");
+            //library.Sort();
+            //foreach (Book book in library)
+            //{
+            //    Console.WriteLine(book);
+            //}
+            //Console.WriteLine("Sorting by names");
+            //library.Sort(new CW.cw7.AuthorNameComparer());
+            //foreach(Book book in library)
+            //{
+            //    Console.WriteLine(book);
+            //}
+            //----------------------------------------PRACTICE-------------------------------------------
+            MyArray arr = new( new int[]{ 1, 2, 3, 4, 5} );
+            arr.Show("Message");
+            Console.WriteLine(arr.Max());
+            Console.WriteLine(arr.Min());
+            Console.WriteLine(arr.Search(5));
             #endregion
         }
     }
