@@ -2,6 +2,7 @@
 using ClassWork.CW;
 using ClassWork.CW.cw6;
 using ClassWork.CW.cw7;
+using ClassWork.CW.cw8;
 using static ClassWork.CW.cw3;
 using static ClassWork.CW.cw5;
 using static ClassWork.CW.player;
@@ -98,11 +99,41 @@ namespace ClassWork
             //    Console.WriteLine(book);
             //}
             //----------------------------------------PRACTICE-------------------------------------------
-            MyArray arr = new( new int[]{ 1, 2, 3, 4, 5} );
-            arr.Show("Message");
-            Console.WriteLine(arr.Max());
-            Console.WriteLine(arr.Min());
-            Console.WriteLine(arr.Search(5));
+            //MyArray arr = new( new int[]{ 1, 2, 3, 4, 5} );
+            //arr.Show("Message");
+            //Console.WriteLine(arr.Max());
+            //Console.WriteLine(arr.Min());
+            //Console.WriteLine(arr.Search(5));
+            #endregion
+            #region CW8
+            //CW.cw8.File file = new CW.cw8.File("test", "C:\\public\\test.txt");
+            //try
+            //{
+            //    file.Open();
+            //    file.AddData("daPODSAPO");
+
+            //}
+            //catch (Exception ex) { }
+            //finally
+            //{
+            //    file.Dispose();
+            //}
+
+            //using(CW.cw8.File file2 = new CW.cw8.File("test", "C:\\public\\test.txt"))
+            //{
+            //    file.Open();
+            //    file.AddData("fffffffffffffffffffffff");
+            //    file.AddData("aaaaaaaaaaaaaaaaaa");
+            //}
+            Film film = new("IDk", "NikitaEEnt", "Fantasy", 2.40f, "1.1.1000");
+            film.CreateGarbage();
+            Console.WriteLine(film.ToString());
+            Play play = new("IDk", "NikitaEEnt", "Fantasy", 2.40f, "N.S.Knyazin");
+            play.CreateGarbage();
+            Console.WriteLine(play.ToString());
+            Console.WriteLine(System.GC.GetTotalMemory(false));
+            System.GC.Collect();
+            Console.WriteLine(System.GC.GetTotalMemory(false));
             #endregion
         }
     }
