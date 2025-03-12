@@ -13,6 +13,7 @@ using static project2.hm.HM_5.Course;
 using static project2.hm.HM_5.OnlineCourse;
 using project2.hm.HM_5;
 using project2.hm.HM_6;
+using ClassWork.CW.cw7;
 
 namespace project2
 {
@@ -20,23 +21,14 @@ namespace project2
     {
         static void Main(string[] args)
         {
-            hm.HM_6.Money money = new(100, 0);
-            try
-            {
-                money.Print();
-                money = money - new hm.HM_6.Money(20, 50);
-                money.Print();
-                money += new hm.HM_6.Money(35, 25);
-                money.Print();
-                money -= new hm.HM_6.Money(110, 50);
-                money.Print();
-                money -= new hm.HM_6.Money(4, 26);
-
-            }
-            catch (BankrutException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            MyArray array = new MyArray();
+            array.Show();
+            Console.WriteLine(array.Greater(50));
+            Console.WriteLine(array.Less(50));
+            array.ShowEven();
+            array.ShowOdd();
+            Console.WriteLine(array.CountDistinct());
+            Console.WriteLine(array.EqualToValue(50));
 
         }
 
