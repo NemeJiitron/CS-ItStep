@@ -15,6 +15,7 @@ using project2.hm.HM_5;
 using project2.hm.HM_6;
 using project2.hm.HM_8;
 using ClassWork.CW.cw7;
+using project2.hm.HM_9;
 
 namespace project2
 {
@@ -22,18 +23,7 @@ namespace project2
     {
         static void Main(string[] args)
         {
-            using (Library library = new Library(new Book("A", "b", "d", 420), new Book("d", "b", "d", 104), new Book("a", "b", "q", 1200)))
-            {
-                Console.WriteLine(library.ToString());
-                library.Books[0].CreateGarbage();
-                System.GC.Collect();
-            }
-            using (hm.HM_8.File file = new hm.HM_8.File(".txt", 240, "\\C\\itstep\\.NET"))
-            {
-                Console.WriteLine(file.ToString());
-                file.CreateGarbage();
-                System.GC.Collect();
-            }
+            MyDelegates.Run();
 
         }
 

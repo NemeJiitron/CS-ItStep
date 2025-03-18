@@ -144,27 +144,27 @@ namespace ClassWork
             //door.OnOpenDoor += alarm.OnDoorOpen;
             //door.OpenDoor();
 
-            //MyDelegate.Delegate del = delegate(string msg) { Console.WriteLine(msg); };
+            //MyDelegate.Delegate del = delegate (string msg) { Console.WriteLine(msg); };
             //del("Delegaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaate+");
             //MyDelegate.Delegate del2 = (string msg) => Console.WriteLine(msg);
             //del2("Delegaaaaaaaaae+");
 
             #endregion
             #region CW10
-            int num = 10;
-            Console.WriteLine(num.Odd());
-            Console.WriteLine(num.Even());
-            int num2 = 17;
-            Console.WriteLine(num2.Simple());
-            string str = "munyun";
-            Console.WriteLine(str.Vowels());
-            Console.WriteLine(str.Consonants());
-            string str2 = "munyun. munyun. munyun. munyun.";
-            Console.WriteLine(str2.Sentences());
-            Person[] people = { new Person("Nikita", "Knyazin", 16), new Person("Nick", "Knyazin", 20), new Person("Nikita", "Gryazin", 9) };
-            Console.WriteLine(people.MaxAge());
-            Console.WriteLine(people.MinAge());
-            Console.WriteLine(people.Average());
+            //int num = 10;
+            //Console.WriteLine(num.Odd());
+            //Console.WriteLine(num.Even());
+            //int num2 = 17;
+            //Console.WriteLine(num2.Simple());
+            //string str = "munyun";
+            //Console.WriteLine(str.Vowels());
+            //Console.WriteLine(str.Consonants());
+            //string str2 = "munyun. munyun. munyun. munyun.";
+            //Console.WriteLine(str2.Sentences());
+            //Person[] people = { new Person("Nikita", "Knyazin", 16), new Person("Nick", "Knyazin", 20), new Person("Nikita", "Gryazin", 9) };
+            //Console.WriteLine(people.MaxAge());
+            //Console.WriteLine(people.MinAge());
+            //Console.WriteLine(people.Average());
 
             #endregion
 
