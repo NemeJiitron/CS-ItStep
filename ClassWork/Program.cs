@@ -3,13 +3,16 @@ using System.Reflection.Metadata.Ecma335;
 using ClassWork.CW;
 using ClassWork.CW.cw6;
 using ClassWork.CW.cw7;
-using ClassWork.CW.cw8;
+//using ClassWork.CW.cw8;
 using project2.hm.HM_9;
 using static ClassWork.CW.cw3;
 using static ClassWork.CW.cw5;
 using static ClassWork.CW.player;
 using ClassWork.CW.cw10;
-
+using ClassWork.CW.cw11;
+using System.Text;
+using System.IO;
+using System.Xml.Serialization;
 namespace ClassWork
 {
     internal class Program
@@ -166,8 +169,161 @@ namespace ClassWork
             //Console.WriteLine(people.MinAge());
             //Console.WriteLine(people.Average());
 
-            #endregion
+            //MyArr<CW.cw10.Employee> arr = new MyArr<CW.cw10.Employee>();
+            //Console.WriteLine(arr.ToString());
 
+            #endregion
+            #region CW11
+            //MyStack<int> stack = new MyStack<int>();
+            //stack.Add(1);
+            //stack.Add(2);
+            //stack.Add(3);
+            //stack.Add(4);
+            //stack.Add(5);
+            //Console.WriteLine(stack.Peek());
+            //Console.WriteLine(stack.Pop());
+            //Console.WriteLine(stack.Pop());
+            //Console.WriteLine("~~~~~~~~~~~~~~~~~");
+            //MyQueue<int> q = new MyQueue<int>();
+            //q.Add(1);
+            //q.Add(2);
+            //q.Add(3);
+            //q.Add(4);
+            //q.Add(5);
+            //Console.WriteLine(q.Peek());
+            //Console.WriteLine(q.Pop());
+            //Console.WriteLine(q.Pop());
+
+            //int[] arr1 = { 2, 34, 75, -32, 40, 7 };
+            //Predicate<int> criteria1 = x => x % 2 == 0;
+            //Predicate<int> criteria2 = x => x > 0;
+            //int[] arr2 = GenericMethods.FilterByTwoCriteria(arr1, criteria1, criteria2);
+            //for (int i = 0; i < arr2.Length; i++)
+            //{
+            //    Console.WriteLine(arr2[i]);
+            //}
+            //Alphabet a = new Alphabet();
+            //string str = "";
+            //foreach (char s in a)
+            //{
+            //    str += s;
+            //}
+            //Console.WriteLine(str);
+            #endregion
+            #region CW12
+            //using (FileStream fs = new FileStream("file.txt", FileMode.OpenOrCreate, FileAccess.Write))
+            //{
+            //    byte[] buffer = Encoding.UTF8.GetBytes("hello world");
+            //    fs.Write(buffer, 0, buffer.Length);
+            //}
+            //DirectoryInfo dir = new DirectoryInfo(".");
+            //Console.WriteLine(dir.FullName);
+            //Console.WriteLine(dir.CreationTime);
+            //FileInfo[] fileInfos = dir.GetFiles();
+            //foreach (FileInfo fileInfo in fileInfos)
+            //{
+            //    Console.WriteLine(fileInfo.Name + " - File." + $" {fileInfo.Length} - Size");
+            //}
+
+            //            1
+            string path = Console.ReadLine();
+            if (File.Exists(path))
+            {
+                string text = File.ReadAllText(path);
+                Console.WriteLine(text);
+            }
+            else
+            {
+                throw new Exception("Wrong path");
+            }
+
+            //            2
+            using (FileStream fs = new FileStream("Task2.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "Read":
+                        List<int> list = new List<int>();
+                        StreamReader sr = new StreamReader(fs);
+                        string num = "";
+                        while (!sr.EndOfStream)
+                        {
+                            char ch = (char)sr.Read();
+                            if (char.IsDigit(ch))
+                            {
+                                num += ch;
+                            }
+                            else
+                            {
+                                list.Add(int.Parse(num));
+                                num = "";
+                            }
+                        }
+                        if (num != "")
+                        {
+                            list.Add(int.Parse(num));
+                        }
+                        foreach (int i in list)
+                        {
+                            Console.Write(i.ToString() + " ");
+                        }
+                        break;
+                    case "Write":
+                        Console.Write("Range: ");
+                        int size = int.Parse(Console.ReadLine());
+                        string number;
+                        for (int i = 0; i < size; i++)
+                        {
+                            number = Console.ReadLine();
+                            int isParse;
+                            if (int.TryParse(number, out isParse))
+                            {
+                                fs.Write(Encoding.UTF8.GetBytes(number + " "), 0, number.Length + 1);
+                            }
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Wrong input");
+                        break;
+                }
+            }
+            //            3
+            using (FileStream evenStream = new FileStream("Even.txt", FileMode.OpenOrCreate, FileAccess.Write), oddStream = new FileStream("Odd.txt", FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                Random random = new Random();
+                StreamWriter even = new StreamWriter(evenStream);
+                StreamWriter odd = new StreamWriter(oddStream);
+                for (int i = 0; i < 10000; i++)
+                {
+                    int num = random.Next();
+                    if (num % 2 == 0)
+                    {
+                        even.WriteLine(num);
+                    }
+                    else
+                    {
+                        odd.WriteLine(num);
+                    }
+                }
+                FileInfo evenFile = new FileInfo("Even.txt");
+                FileInfo oddFile = new FileInfo("Odd.txt");
+                Console.WriteLine("Even File");
+                Console.WriteLine($"File name - {evenFile.Name}");
+                Console.WriteLine($"Size - {evenFile.Length}");
+                Console.WriteLine($"File path - {evenFile.FullName}");
+                Console.WriteLine($"Creation time - {evenFile.CreationTime}");
+                Console.WriteLine($"Last access time - {evenFile.LastAccessTime}");
+                Console.WriteLine($"Last write time - {evenFile.LastWriteTime}");
+                Console.WriteLine("Odd File");
+                Console.WriteLine($"File name - {oddFile.Name}");
+                Console.WriteLine($"Size - {oddFile.Length}");
+                Console.WriteLine($"File path - {oddFile.FullName}");
+                Console.WriteLine($"Creation time - {oddFile.CreationTime}");
+                Console.WriteLine($"Last access time - {oddFile.LastAccessTime}");
+                Console.WriteLine($"Last write time - {oddFile.LastWriteTime}");
+            }
+            #endregion
         }
     }
 }

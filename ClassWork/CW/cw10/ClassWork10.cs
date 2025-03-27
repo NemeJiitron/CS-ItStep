@@ -19,9 +19,10 @@ namespace ClassWork.CW.cw10
         }
     }
 
-    public record Employee(string Name, int Age, string Occupation);
+    public record Person(string Name, int Age);
+    public record Employee(string Name, int Age, string Occupation) : Person(Name, Age);
 
-    public class MyArr<T> where T : class, IComparable<T>, new()
+    public class MyArr<T> where T : Person
     {
         public T[] arr;
         public MyArr(T[] arr)
@@ -36,5 +37,16 @@ namespace ClassWork.CW.cw10
                 arr[i] = default;
             }
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (T t in this.arr)
+            {
+                sb.Append(t.ToString());
+            }
+            return sb.ToString();
+        }
     }
+
+
 }
