@@ -13,6 +13,11 @@ using ClassWork.CW.cw11;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using ClassWork.CW.cw13;
+using ClassWork.CW.cw14;
+using System.Reflection.Metadata;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 namespace ClassWork
 {
     internal class Program
@@ -225,104 +230,224 @@ namespace ClassWork
             //    Console.WriteLine(fileInfo.Name + " - File." + $" {fileInfo.Length} - Size");
             //}
 
-            //            1
-            string path = Console.ReadLine();
-            if (File.Exists(path))
+            ////            1
+            //string path = Console.ReadLine();
+            //if (File.Exists(path))
+            //{
+            //    string text = File.ReadAllText(path);
+            //    Console.WriteLine(text);
+            //}
+            //else
+            //{
+            //    throw new Exception("Wrong path");
+            //}
+
+            ////            2
+            //using (FileStream fs = new FileStream("Task2.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            //{
+            //    string choice = Console.ReadLine();
+            //    switch (choice)
+            //    {
+            //        case "Read":
+            //            List<int> list = new List<int>();
+            //            StreamReader sr = new StreamReader(fs);
+            //            string num = "";
+            //            while (!sr.EndOfStream)
+            //            {
+            //                char ch = (char)sr.Read();
+            //                if (char.IsDigit(ch))
+            //                {
+            //                    num += ch;
+            //                }
+            //                else
+            //                {
+            //                    list.Add(int.Parse(num));
+            //                    num = "";
+            //                }
+            //            }
+            //            if (num != "")
+            //            {
+            //                list.Add(int.Parse(num));
+            //            }
+            //            foreach (int i in list)
+            //            {
+            //                Console.Write(i.ToString() + " ");
+            //            }
+            //            break;
+            //        case "Write":
+            //            Console.Write("Range: ");
+            //            int size = int.Parse(Console.ReadLine());
+            //            string number;
+            //            for (int i = 0; i < size; i++)
+            //            {
+            //                number = Console.ReadLine();
+            //                int isParse;
+            //                if (int.TryParse(number, out isParse))
+            //                {
+            //                    fs.Write(Encoding.UTF8.GetBytes(number + " "), 0, number.Length + 1);
+            //                }
+            //            }
+            //            break;
+            //        default:
+            //            Console.WriteLine("Wrong input");
+            //            break;
+            //    }
+            //}
+            ////            3
+            //using (FileStream evenStream = new FileStream("Even.txt", FileMode.OpenOrCreate, FileAccess.Write), oddStream = new FileStream("Odd.txt", FileMode.OpenOrCreate, FileAccess.Write))
+            //{
+            //    Random random = new Random();
+            //    StreamWriter even = new StreamWriter(evenStream);
+            //    StreamWriter odd = new StreamWriter(oddStream);
+            //    for (int i = 0; i < 10000; i++)
+            //    {
+            //        int num = random.Next();
+            //        if (num % 2 == 0)
+            //        {
+            //            even.WriteLine(num);
+            //        }
+            //        else
+            //        {
+            //            odd.WriteLine(num);
+            //        }
+            //    }
+            //    FileInfo evenFile = new FileInfo("Even.txt");
+            //    FileInfo oddFile = new FileInfo("Odd.txt");
+            //    Console.WriteLine("Even File");
+            //    Console.WriteLine($"File name - {evenFile.Name}");
+            //    Console.WriteLine($"Size - {evenFile.Length}");
+            //    Console.WriteLine($"File path - {evenFile.FullName}");
+            //    Console.WriteLine($"Creation time - {evenFile.CreationTime}");
+            //    Console.WriteLine($"Last access time - {evenFile.LastAccessTime}");
+            //    Console.WriteLine($"Last write time - {evenFile.LastWriteTime}");
+            //    Console.WriteLine("Odd File");
+            //    Console.WriteLine($"File name - {oddFile.Name}");
+            //    Console.WriteLine($"Size - {oddFile.Length}");
+            //    Console.WriteLine($"File path - {oddFile.FullName}");
+            //    Console.WriteLine($"Creation time - {oddFile.CreationTime}");
+            //    Console.WriteLine($"Last access time - {oddFile.LastAccessTime}");
+            //    Console.WriteLine($"Last write time - {oddFile.LastWriteTime}");
+            //}
+            #endregion
+            #region CW13
+            //LINQ.run();
+
+            #endregion
+            #region CW14
+            // ATTRIBUTES
+            //CustomAttrDemo customAttrDemo = new CustomAttrDemo();
+            //Type type = customAttrDemo.GetType();
+            //foreach(var method in type.GetMethods())
+            //{
+            //    foreach(var customAtrribute in Attribute.GetCustomAttributes(method))
+            //    {
+            //        if(customAtrribute.GetType() == typeof(AnimalAttribute))
+            //        {
+            //            Console.WriteLine(((AnimalAttribute)customAtrribute).Pet);
+            //        }
+            //    }
+            //}
+            // Serialization
+
+            //SerializablePerson person = new SerializablePerson(20);
+
+            //BinaryFormatter bf = new BinaryFormatter(); //                 OBSOLETE
+            //try
+            //{
+            //    using (FileStream fs = File.Create("person.bin"))
+            //    {
+            //        bf.Serialize(fs, person);
+            //    }
+            //    SerializablePerson p = null;
+            //    using (FileStream fs = File.Open("person.bin", FileMode.Open))
+            //    {
+            //        p = (SerializablePerson)bf.Deserialize(fs);
+            //    }
+            //    Console.WriteLine(p.ToString());
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //                  Json
+            //byte[] PersonData = JsonSerializer.SerializeToUtf8Bytes(person);
+            //SerializablePerson DeserializedPerson = JsonSerializer.Deserialize<SerializablePerson>(PersonData);
+            //Console.WriteLine(DeserializedPerson.ToString());
+
+            ////                  XML
+            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(SerializablePerson));
+            //try
+            //{
+            //    using (FileStream fs = File.Create("person.xml"))
+            //    {
+            //        xmlSerializer.Serialize(fs, person);
+            //    }
+            //    using (FileStream fs = File.Open("person.xml", FileMode.Open))
+            //    {
+            //        SerializablePerson p = (SerializablePerson)xmlSerializer.Deserialize(fs);
+            //        Console.WriteLine(p.ToString());
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            ////                  JSON
+
+            //string serializedStr = JsonSerializer.Serialize(person);
+            //using(StreamWriter sw = new("person.json"))
+            //{
+            //    sw.WriteLine(serializedStr);
+            //}
+            //using (StreamReader sr = new StreamReader("person.json"))
+            //{
+            //    SerializablePerson deserilizedJson = JsonSerializer.Deserialize<SerializablePerson>(sr.ReadToEnd());
+            //    Console.WriteLine(deserilizedJson);
+            //}
+            //Console.WriteLine(serializedStr);
+
+
+            //ClassWork.CW.cw14.Practise.Run();
+
+            //          2/3
+            //Album al = new("vinik", "vinik", "vinik", "vinik", "vinik", new Song("Vovchica", "10:00", "folk"), new Song("Vovchica", "10:00", "folk"));
+            //Console.WriteLine(al.ToString());
+
+            //string serializedAlbum = JsonSerializer.Serialize(al);
+            //Console.WriteLine(serializedAlbum);
+
+            //using (StreamWriter sw = new StreamWriter("vinik.json"))
+            //{
+            //    sw.WriteLine(serializedAlbum);
+            //}
+            //using (StreamReader sw = new StreamReader("vinik.json"))
+            //{
+            //    Album album2 = JsonSerializer.Deserialize<Album>(sw.ReadToEnd());
+            //    Console.WriteLine(album2.ToString());
+            //}
+            //          4
+            Album al = new("vinik", "vinik", "vinik", "vinik", "vinik", new Song("Vovchica", "10:00", "folk"), new Song("Vovchica", "10:00", "folk"));
+            Album[] albums = new Album[] { al, al, al };
+
+            string serializedAlbums = JsonSerializer.Serialize(albums);
+            Console.WriteLine(serializedAlbums);
+
+            using (StreamWriter sw = new StreamWriter("vinik.json"))
             {
-                string text = File.ReadAllText(path);
-                Console.WriteLine(text);
+                sw.WriteLine(serializedAlbums);
             }
-            else
+            using (StreamReader sw = new StreamReader("vinik.json"))
             {
-                throw new Exception("Wrong path");
+                Album[] albums2 = JsonSerializer.Deserialize<Album[]>(sw.ReadToEnd());
+                foreach(Album album in albums)
+                {
+                    Console.WriteLine(album.ToString());
+
+                }
             }
 
-            //            2
-            using (FileStream fs = new FileStream("Task2.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
-            {
-                string choice = Console.ReadLine();
-                switch (choice)
-                {
-                    case "Read":
-                        List<int> list = new List<int>();
-                        StreamReader sr = new StreamReader(fs);
-                        string num = "";
-                        while (!sr.EndOfStream)
-                        {
-                            char ch = (char)sr.Read();
-                            if (char.IsDigit(ch))
-                            {
-                                num += ch;
-                            }
-                            else
-                            {
-                                list.Add(int.Parse(num));
-                                num = "";
-                            }
-                        }
-                        if (num != "")
-                        {
-                            list.Add(int.Parse(num));
-                        }
-                        foreach (int i in list)
-                        {
-                            Console.Write(i.ToString() + " ");
-                        }
-                        break;
-                    case "Write":
-                        Console.Write("Range: ");
-                        int size = int.Parse(Console.ReadLine());
-                        string number;
-                        for (int i = 0; i < size; i++)
-                        {
-                            number = Console.ReadLine();
-                            int isParse;
-                            if (int.TryParse(number, out isParse))
-                            {
-                                fs.Write(Encoding.UTF8.GetBytes(number + " "), 0, number.Length + 1);
-                            }
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("Wrong input");
-                        break;
-                }
-            }
-            //            3
-            using (FileStream evenStream = new FileStream("Even.txt", FileMode.OpenOrCreate, FileAccess.Write), oddStream = new FileStream("Odd.txt", FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                Random random = new Random();
-                StreamWriter even = new StreamWriter(evenStream);
-                StreamWriter odd = new StreamWriter(oddStream);
-                for (int i = 0; i < 10000; i++)
-                {
-                    int num = random.Next();
-                    if (num % 2 == 0)
-                    {
-                        even.WriteLine(num);
-                    }
-                    else
-                    {
-                        odd.WriteLine(num);
-                    }
-                }
-                FileInfo evenFile = new FileInfo("Even.txt");
-                FileInfo oddFile = new FileInfo("Odd.txt");
-                Console.WriteLine("Even File");
-                Console.WriteLine($"File name - {evenFile.Name}");
-                Console.WriteLine($"Size - {evenFile.Length}");
-                Console.WriteLine($"File path - {evenFile.FullName}");
-                Console.WriteLine($"Creation time - {evenFile.CreationTime}");
-                Console.WriteLine($"Last access time - {evenFile.LastAccessTime}");
-                Console.WriteLine($"Last write time - {evenFile.LastWriteTime}");
-                Console.WriteLine("Odd File");
-                Console.WriteLine($"File name - {oddFile.Name}");
-                Console.WriteLine($"Size - {oddFile.Length}");
-                Console.WriteLine($"File path - {oddFile.FullName}");
-                Console.WriteLine($"Creation time - {oddFile.CreationTime}");
-                Console.WriteLine($"Last access time - {oddFile.LastAccessTime}");
-                Console.WriteLine($"Last write time - {oddFile.LastWriteTime}");
-            }
             #endregion
         }
     }
