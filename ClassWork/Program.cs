@@ -146,7 +146,7 @@ namespace ClassWork
             //System.GC.Collect();
             //Console.WriteLine(System.GC.GetTotalMemory(false));
             #endregion
-            #region CW9
+    #region CW9
             //Door door = new();
             //Alarm alarm = new();
             //door.OnOpenDoor += alarm.OnDoorOpen;
@@ -409,27 +409,27 @@ namespace ClassWork
             //Console.WriteLine(serializedStr);
 
 
-            //ClassWork.CW.cw14.Practise.Run();
+            ClassWork.CW.cw14.Practise.Run();
 
             //          2/3
-            //Album al = new("vinik", "vinik", "vinik", "vinik", "vinik", new Song("Vovchica", "10:00", "folk"), new Song("Vovchica", "10:00", "folk"));
-            //Console.WriteLine(al.ToString());
-
-            //string serializedAlbum = JsonSerializer.Serialize(al);
-            //Console.WriteLine(serializedAlbum);
-
-            //using (StreamWriter sw = new StreamWriter("vinik.json"))
-            //{
-            //    sw.WriteLine(serializedAlbum);
-            //}
-            //using (StreamReader sw = new StreamReader("vinik.json"))
-            //{
-            //    Album album2 = JsonSerializer.Deserialize<Album>(sw.ReadToEnd());
-            //    Console.WriteLine(album2.ToString());
-            //}
-            //          4
             Album al = new("vinik", "vinik", "vinik", "vinik", "vinik", new Song("Vovchica", "10:00", "folk"), new Song("Vovchica", "10:00", "folk"));
-            Album[] albums = new Album[] { al, al, al };
+            Console.WriteLine(al.ToString());
+
+            string serializedAlbum = JsonSerializer.Serialize(al);
+            Console.WriteLine(serializedAlbum);
+
+            using (StreamWriter sw = new StreamWriter("vinik.json"))
+            {
+                sw.WriteLine(serializedAlbum);
+            }
+            using (StreamReader sw = new StreamReader("vinik.json"))
+            {
+                Album album2 = JsonSerializer.Deserialize<Album>(sw.ReadToEnd());
+                Console.WriteLine(album2.ToString());
+            }
+            //          4
+            Album al2 = new("vinik", "vinik", "vinik", "vinik", "vinik", new Song("Vovchica", "10:00", "folk"), new Song("Vovchica", "10:00", "folk"));
+            Album[] albums = new Album[] { al2, al2, al2 };
 
             string serializedAlbums = JsonSerializer.Serialize(albums);
             Console.WriteLine(serializedAlbums);

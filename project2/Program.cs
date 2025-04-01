@@ -18,6 +18,7 @@ using ClassWork.CW.cw7;
 using project2.hm.HM_9;
 using project2.hm.HM_10;
 using project2.hm.HM_11;
+using project2.hm.HM_12;
 
 namespace project2
 {
@@ -25,20 +26,30 @@ namespace project2
     {
         static void Main(string[] args)
         {
-            Backpack backpack = new("red", "brand", "leather", 2, 5);
-            backpack.OnItemAdded += (obj) =>
+            //          1
+            List<Poem> poems = new List<Poem>();
+            poems.Add(new Poem());
+            poems.Add(new Poem());
+            poems.Add(new Poem());
+            Console.WriteLine(Poem.SearchBy(poems, "name", "name").ToString());
+            using(StreamWriter sw = new StreamWriter("Poems.txt"))
             {
-                Console.WriteLine($"Item {obj.ToString} is put in backpack");
-            };
-            backpack.OnItemRemoved += (obj) =>
+                foreach (Poem poem in poems) sw.WriteLine(poem.ToString());
+            }
+            List<Poem> poems2 = new List<Poem>();
+            using (StreamReader sr = new StreamReader("Poems.txt"))
             {
-                Console.WriteLine($"Item {obj.ToString} is removed from backpack");
-            };
-            backpack.OnVarChanged += () =>
+                while(!sr.EndOfStream)
+                {
+                    poems2.Add(new Poem(sr.ReadLine(), sr.ReadLine(), int.Parse(sr.ReadLine()), sr.ReadLine(), sr.ReadLine()));
+                    sr.ReadLine();
+                }
+            }
+            foreach (Poem poem in poems2)
             {
-                Console.WriteLine($"Var changed");
-            };
-            CreditCardDelegates.main();
+                Console.WriteLine(poem.ToString());
+            }
+
 
 
         }
