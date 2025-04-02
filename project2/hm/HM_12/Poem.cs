@@ -84,7 +84,7 @@ namespace project2.hm.HM_12
         }
         public override string ToString()
         {
-            return $"{Name}\n{Author}\n{Date}\n{Text}\n{Theme}\n";
+            return $"{Name}\n{Author}\n{Year}\n{Text}\n{Theme}\n";
         }
     }
 }
