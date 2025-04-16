@@ -22,6 +22,7 @@ using project2.hm.HM_12;
 using project2.hm.HM_13;
 using project2.HM_14;
 using System.Text.Json;
+using project2.HM_16;
 
 namespace project2
 {
@@ -29,38 +30,23 @@ namespace project2
     {
         public static void Main(string[] args)
         {
-        //              1
-            //List<Frac> fracs = new List<Frac>();
-            //int d = 1;
-            //while(d != 0)
-            //{
-            //    fracs.Add(Frac.Read());
-            //    d = fracs.Last().Denominator;
-            //}
-            //fracs.RemoveAt(fracs.Count - 1);
-            //SerializerJson.Save(fracs, "Fractures.json");
-            //List<Frac> fracs2 = SerializerJson.Load<List<Frac>>("Fractures.json");
-            //foreach(Frac f in fracs2)
-            //{
-            //    Console.WriteLine($"{f.Numerator}\n-\n{f.Denominator}");
-            //    Console.WriteLine();
-            //}
-        //              2/3/4
-            Journal journal = new Journal("Minoni", "Knyazin house", "02-02-2025", 10000, new Article[2] { new Article("Ballhog", 100, "Knyzin fr ballhog"), new Article("Kyrie Ballhog", 111100, "tomu sho win goat") });
-            Console.WriteLine(journal);
-            SerializerJson.Save(journal, "journal.json");
-            Journal journal2 = SerializerJson.Load<Journal>("journal.json");
-            Console.WriteLine(journal2);
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-            Journal journal3 = new Journal("Nords", "ling.drk", "02-02-2025", 1200, new Article[2] { new Article("runes", 100, "runic alphabet"), new Article("onthology", 111100, "turk is tsar") });
-            Journal[] journals = new Journal[2] { journal, journal3 };
-            SerializerJson.Save(journals, "journals.json");
-            Journal[] journals2 = SerializerJson.Load<Journal[]>("journals.json");
-            foreach(Journal j in journals2)
-            {
-                Console.WriteLine(j);
-            }
+            AppConfig config = AppConfig.Instance();
+            config.SetSettings("Theme", "White");
+            AppConfig conf = AppConfig.Instance();
+            Console.WriteLine(conf.GetSettings("Theme"));
+            Console.WriteLine();
+            ShapeFactory circleFactory = new CircleFactory();
+            ShapeFactory rectFactory = new RectFactory();
+            IShape circ = circleFactory.Create();
+            IShape rect = rectFactory.Create();
+            circ.Draw();
+            rect.Draw();
+            Console.WriteLine();
+            GeoLocation location = new GeoLocation("37.7749,-122.4194");
+            ICoordinatesService coordinatesService = new GeoLocationAdapter(location);
+            var coords = coordinatesService.GetCoordinates();
+            Console.WriteLine(coords.Latitude);
+            Console.WriteLine(coords.Longitude);
         }
 
 
