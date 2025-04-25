@@ -23,6 +23,7 @@ using project2.hm.HM_13;
 using project2.HM_14;
 using System.Text.Json;
 using project2.HM_16;
+using project2.Exam_Practice.DictApp;
 
 namespace project2
 {
@@ -30,23 +31,8 @@ namespace project2
     {
         public static void Main(string[] args)
         {
-            AppConfig config = AppConfig.Instance();
-            config.SetSettings("Theme", "White");
-            AppConfig conf = AppConfig.Instance();
-            Console.WriteLine(conf.GetSettings("Theme"));
-            Console.WriteLine();
-            ShapeFactory circleFactory = new CircleFactory();
-            ShapeFactory rectFactory = new RectFactory();
-            IShape circ = circleFactory.Create();
-            IShape rect = rectFactory.Create();
-            circ.Draw();
-            rect.Draw();
-            Console.WriteLine();
-            GeoLocation location = new GeoLocation("37.7749,-122.4194");
-            ICoordinatesService coordinatesService = new GeoLocationAdapter(location);
-            var coords = coordinatesService.GetCoordinates();
-            Console.WriteLine(coords.Latitude);
-            Console.WriteLine(coords.Longitude);
+            DictionariesApp program = new DictionariesApp("SavedDicts.json");
+            program.Run();
         }
 
 
